@@ -1,0 +1,1921 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>福州親子行程 ｜ AE0211/0212</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f2eb;
+      --card: #fff;
+      --warm: #ede7d8;
+      --border: #ddd3be;
+      --ink: #1c1610;
+      --ink2: #5a4a36;
+      --ink3: #9a8870;
+      --c1: #8b3a12;
+      --c1l: #fdf0e6;
+      /* D1 橙紅 */
+      --c2: #1a5438;
+      --c2l: #e6f4ed;
+      /* D2 深綠 */
+      --c3: #1c3f6e;
+      --c3l: #e6eef8;
+      /* D3 深藍 */
+      --c4: #4a1c6e;
+      --c4l: #ede6f8;
+      /* D4 深紫 */
+      --c5: #3a3028;
+      --c5l: #ede9e3;
+      /* D5 深褐 */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    /* ── HEADER ── */
+    .hd {
+      background: var(--ink);
+      padding: 48px 32px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hd::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255, 255, 255, .016) 40px, rgba(255, 255, 255, .016) 41px);
+    }
+
+    .hd-in {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hd-eye {
+      font-size: 10px;
+      letter-spacing: 5px;
+      font-weight: 500;
+      color: #c8844a;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hd h1 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: clamp(24px, 4vw, 40px);
+      font-weight: 700;
+      color: #f4ede0;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .hd h1 em {
+      color: #e0a040;
+      font-style: normal;
+    }
+
+    .hd-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .info-chip {
+      font-size: 12px;
+      color: rgba(244, 237, 224, .6);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ── FLIGHT BANNER ── */
+    .fl-bar {
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .fl-seg {
+      font-size: 13px;
+      color: rgba(244, 237, 224, .85);
+    }
+
+    .fl-seg .fn {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #c8844a;
+      margin-bottom: 4px;
+    }
+
+    .fl-seg .ft {
+      font-size: 18px;
+      font-weight: 600;
+      color: #f4ede0;
+      font-family: 'Noto Serif TC', serif;
+    }
+
+    .fl-seg .fd {
+      font-size: 11px;
+      color: rgba(244, 237, 224, .5);
+      margin-top: 2px;
+    }
+
+    .fl-mid {
+      text-align: center;
+      color: rgba(244, 237, 224, .3);
+      font-size: 20px;
+    }
+
+    .fl-seg.right {
+      text-align: right;
+    }
+
+    /* ── TAB BAR ── */
+    .tb-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--ink);
+      border-bottom: 1px solid rgba(255, 255, 255, .07);
+    }
+
+    .tb-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tb-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .dt {
+      flex-shrink: 0;
+      padding: 13px 20px 11px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: rgba(244, 237, 224, .38);
+      border-bottom: 3px solid transparent;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+
+    .dt span {
+      font-size: 9.5px;
+      letter-spacing: 2px;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .dt.on {
+      color: #f4ede0;
+      border-bottom-color: #e0a040;
+    }
+
+    .dt:hover:not(.on) {
+      color: rgba(244, 237, 224, .65);
+    }
+
+    /* ── PANEL ── */
+    .pn {
+      display: none;
+    }
+
+    .pn.on {
+      display: block;
+    }
+
+    .pg {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 22px 72px;
+    }
+
+    /* ── DAY HEADER ── */
+    .dh {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .badge {
+      flex-shrink: 0;
+      width: 66px;
+      height: 66px;
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .badge .n {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .badge .s {
+      font-size: 9.5px;
+      letter-spacing: 1.5px;
+      color: rgba(255, 255, 255, .7);
+      margin-top: 4px;
+    }
+
+    .dh-txt h2 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: clamp(18px, 2.8vw, 26px);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .dh-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .dh-chip {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 11px;
+      border-radius: 20px;
+      background: var(--warm);
+      border: 1px solid var(--border);
+      color: var(--ink2);
+    }
+
+    /* ── TIMELINE ── */
+    .tl {
+      position: relative;
+    }
+
+    .tl::before {
+      content: '';
+      position: absolute;
+      left: 35px;
+      top: 4px;
+      bottom: 4px;
+      width: 1.5px;
+      background: linear-gradient(to bottom, var(--border), transparent);
+    }
+
+    .row {
+      display: flex;
+      gap: 0;
+      margin-bottom: 2px;
+      position: relative;
+    }
+
+    .row-time {
+      flex-shrink: 0;
+      width: 68px;
+      padding: 15px 14px 0 0;
+      text-align: right;
+    }
+
+    .row-time .tm {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink2);
+      line-height: 1;
+    }
+
+    .row-time .te {
+      font-size: 10.5px;
+      color: var(--ink3);
+      margin-top: 2px;
+    }
+
+    .dot-col {
+      flex-shrink: 0;
+      width: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 17px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dot {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2.5px solid var(--border);
+    }
+
+    .dot.f {
+      background: var(--ink2);
+      border-color: var(--ink2);
+    }
+
+    .dot.a {
+      background: #e09030;
+      border-color: #e09030;
+    }
+
+    .dot.r {
+      background: #c03020;
+      border-color: #c03020;
+    }
+
+    .dl {
+      flex: 1;
+      width: 1.5px;
+      background: var(--border);
+      margin-top: 4px;
+      min-height: 16px;
+    }
+
+    .ev-col {
+      flex: 1;
+      padding: 8px 0 20px 14px;
+    }
+
+    /* ── EVENT ── */
+    .ev {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      padding: 14px 16px;
+    }
+
+    .ev.hl {
+      border-width: 1.5px;
+    }
+
+    .ev.trans {
+      background: var(--warm);
+      border-style: none;
+    }
+
+    .ev-hd {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .ev-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    .ev-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .tag {
+      font-size: 9.5px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 12px;
+      white-space: nowrap;
+    }
+
+    .tg-tr {
+      background: #fff3e0;
+      color: #9a5000;
+    }
+
+    .tg-ea {
+      background: #fce8e8;
+      color: #8a2020;
+    }
+
+    .tg-pl {
+      background: #e8f5e9;
+      color: #1b5e20;
+    }
+
+    .tg-rs {
+      background: #e3f2fd;
+      color: #0d3c6e;
+    }
+
+    .tg-sh {
+      background: #f3e5f5;
+      color: #4a148c;
+    }
+
+    .tg-st {
+      background: #fff9c4;
+      color: #7a5f00;
+    }
+
+    .ev-body {
+      font-size: 13px;
+      color: var(--ink2);
+      line-height: 1.85;
+    }
+
+    .ev-body strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .how {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--warm);
+      border: 1px solid var(--border);
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      color: var(--ink2);
+      margin: 4px 4px 4px 0;
+    }
+
+    /* ── RESTAURANT ── */
+    .rb {
+      background: var(--warm);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 11px 14px;
+      margin-top: 9px;
+    }
+
+    .rb .rn {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #902010;
+      margin-bottom: 5px;
+    }
+
+    .rtags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 6px;
+    }
+
+    .rtg {
+      font-size: 9.5px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+
+    .rt-c {
+      background: #e8f5e9;
+      color: #1b5e20;
+    }
+
+    .rt-k {
+      background: #e3f2fd;
+      color: #0d47a1;
+    }
+
+    .rt-a {
+      background: #fce4ec;
+      color: #880e4f;
+    }
+
+    .rt-p {
+      background: #fff8e1;
+      color: #e65100;
+    }
+
+    .rb .rd {
+      font-size: 12.5px;
+      color: var(--ink2);
+      line-height: 1.8;
+    }
+
+    .rb .rd strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* ── ALERTS ── */
+    .al {
+      border-radius: 7px;
+      padding: 9px 13px;
+      font-size: 12.5px;
+      margin-top: 8px;
+      line-height: 1.7;
+    }
+
+    .al-y {
+      background: #fffbe6;
+      border-left: 3px solid #f0c030;
+      color: #5a3d00;
+    }
+
+    .al-b {
+      background: #e3f2fd;
+      border-left: 3px solid #1976d2;
+      color: #0d3060;
+    }
+
+    .al-g {
+      background: #e8f5e9;
+      border-left: 3px solid #43a047;
+      color: #1b4d1c;
+    }
+
+    .al-r {
+      background: #fdecea;
+      border-left: 3px solid #e53935;
+      color: #5a1010;
+    }
+
+    /* ── SUMMARY ── */
+    .sum {
+      background: var(--ink);
+      border-radius: 12px;
+      padding: 26px 28px;
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 14px;
+    }
+
+    .si .sl {
+      font-size: 9.5px;
+      letter-spacing: 2.5px;
+      color: #c8844a;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .si .sv {
+      font-size: 12.5px;
+      color: rgba(244, 237, 224, .78);
+      line-height: 1.7;
+    }
+
+    @media(max-width:580px) {
+      .hd {
+        padding: 36px 18px 32px;
+      }
+
+      .pg {
+        padding: 22px 14px 60px;
+      }
+
+      .tl::before {
+        left: 26px;
+      }
+
+      .row-time {
+        width: 52px;
+        font-size: 11.5px;
+      }
+
+      .dot-col {
+        width: 16px;
+      }
+
+      .ev-col {
+        padding-left: 10px;
+      }
+
+      .fl-bar {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .fl-mid {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <div class="hd">
+    <div class="hd-in">
+      <div class="hd-eye">福州五天四夜親子行 · 2026年6月</div>
+      <h1>每日行程表<br><em>AE0211 ／ AE0212</em></h1>
+      <div class="hd-info">
+        <div class="info-chip">👨‍👩‍👧‍👦 大人×2、4歲幼兒、1歲嬰兒</div>
+        <div class="info-chip">🏨 福州世茂洲際酒店（茶亭站）</div>
+        <div class="info-chip">🛺 步行 ／ 地鐵1號線 ／ 滴滴出行</div>
+      </div>
+      <div class="fl-bar">
+        <div class="fl-seg">
+          <div class="fn">去程 AE0211</div>
+          <div class="ft">07:05 → 08:40</div>
+          <div class="fd">6/12（五）臺北 → 福州</div>
+        </div>
+        <div class="fl-mid">✈</div>
+        <div class="fl-seg right">
+          <div class="fn">回程 AE0212</div>
+          <div class="ft">09:45 → 11:25</div>
+          <div class="fd">6/16（二）福州 → 臺北</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB BAR -->
+  <div class="tb-bar">
+    <div class="tb-inner">
+      <button class="dt on" onclick="gd(1,this)"><span>DAY 1</span>6/12 五</button>
+      <button class="dt" onclick="gd(2,this)"><span>DAY 2</span>6/13 六</button>
+      <button class="dt" onclick="gd(3,this)"><span>DAY 3</span>6/14 日</button>
+      <button class="dt" onclick="gd(4,this)"><span>DAY 4</span>6/15 一</button>
+      <button class="dt" onclick="gd(5,this)"><span>DAY 5</span>6/16 二</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+     DAY 1  6/12（五）
+══════════════════════════════════════ -->
+  <div id="d1" class="pn on">
+    <div class="pg">
+
+      <div class="dh">
+        <div class="badge" style="background:var(--c1);">
+          <div class="n">1</div>
+          <div class="s">JUN 12</div>
+        </div>
+        <div class="dh-txt">
+          <h2 style="color:var(--c1);">抵達入住 · 晉安湖 · 星光摩天輪</h2>
+          <div class="dh-chips">
+            <span class="dh-chip">🚗 網約車（機場→酒店）</span>
+            <span class="dh-chip">🚗 滴滴出行（酒店→晉安湖）</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl">
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">08:40</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot r"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev">
+              <div class="ev-hd">
+                <div class="ev-title">✈ 航班抵達福州長樂機場</div>
+                <div class="ev-tags"><span class="tag tg-tr">交通</span></div>
+              </div>
+              <div class="ev-body">中華航空 AE0211 落地。入境＋提領行李（含推車，件數較多）預估需 <strong>40–55 分鐘</strong>，預估 <strong>09:30–09:40
+                  出機場</strong>。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">09:35</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot f"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev trans">
+              <div class="ev-hd">
+                <div class="ev-title">🚗 長樂機場 → 世茂洲際酒店</div>
+                <div class="ev-tags"><span class="tag tg-tr">交通</span></div>
+              </div>
+              <div class="ev-body">
+                <span class="how">🚗 滴滴商務車（GL8）</span>
+                <span class="how">⏱ 40–50 分鐘</span>
+                <span class="how">💰 約 ¥120–150</span><br>
+                帶嬰兒推車＋多件行李請選<strong>商務車型</strong>（GL8 或同等），後廂可平放推車。出機場後跟指示牌前往「網約車候車區」，步行約 3–5 分鐘。
+              </div>
+              <div class="al al-b">💡 出發前可先在 App 叫好車，出機場時車輛剛好到達。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">10:20</div>
+            <div class="te">–11:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot f"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev">
+              <div class="ev-hd">
+                <div class="ev-title">🏨 抵達世茂洲際酒店 · 辦理入住或寄放行李</div>
+                <div class="ev-tags"><span class="tag tg-rs">入住</span></div>
+              </div>
+              <div class="ev-body">
+                正式入住時間 14:00。抵達時：<br>
+                ① 詢問前台能否<strong>提前入住</strong>（免費，視空房而定）<br>
+                ② 若無法入住→<strong>行李全數寄放</strong>於行李房，推車亦可寄放<br>
+                ③ 告知需要嬰兒床、詢問兒童座椅位置
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">11:30</div>
+            <div class="te">–12:30</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot a"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev hl" style="border-color:var(--c1);">
+              <div class="ev-hd">
+                <div class="ev-title">🍽 午餐：酒店周邊或世茂商都</div>
+                <div class="ev-tags"><span class="tag tg-ea">午餐</span></div>
+              </div>
+              <div class="ev-body">剛抵達為免奔波，直接於酒店附設餐廳（4樓綻放全日餐廳）或步行可達的世茂商都用餐。</div>
+              <div class="rb">
+                <div class="rn">🏨 綻放全日餐廳（世茂洲際 4F）</div>
+                <div class="rtags"><span class="rtg rt-c">中西合璧</span><span class="rtg rt-k">兒童友善</span><span
+                    class="rtg rt-a">零步行距離</span></div>
+                <div class="rd">中式粥品、閩南小點、西式早午餐，環境舒適。抵達首日最輕鬆的選擇。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">13:00</div>
+            <div class="te">–13:30</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev trans">
+              <div class="ev-hd">
+                <div class="ev-title">🚗 世茂洲際 → 晉安湖公園</div>
+                <div class="ev-tags"><span class="tag tg-tr">交通</span></div>
+              </div>
+              <div class="ev-body">
+                <span class="how">🚗 滴滴快車</span>
+                <span class="how">⏱ 約 15 分鐘</span>
+                <span class="how">💰 約 ¥25–35</span><br>
+                告知司機「晉安湖公園西門」，方便推車出入。嬰兒可趁車程午睡。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">13:30</div>
+            <div class="te">–17:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot a"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev hl" style="border-color:var(--c1);">
+              <div class="ev-hd">
+                <div class="ev-title">🌊 晉安湖公園 · 環湖步道 · 推車放風</div>
+                <div class="ev-tags"><span class="tag tg-pl">景點</span><span class="tag tg-st">⭐ 拍照</span></div>
+              </div>
+              <div class="ev-body">
+                全區環湖<strong>無障礙平地步道</strong>，推車極度平穩。<br><br>
+                <strong>13:30–14:30</strong>　湖畔步道散步，拍湖面倒影與市區天際線（上午光線最佳，此時仍佳）<br>
+                <strong>14:30–15:30</strong>　湖畔草地讓4歲幼兒自由奔跑放電，嬰兒推車乘涼<br>
+                <strong>15:30–17:00</strong>　⭐ <strong>星光摩天輪</strong>：俯瞰晉安湖全景，帶4歲幼兒乘坐（出發前確認身高限制）
+              </div>
+              <div class="al al-g">📸 湖面西岸望向市區天際線，下午 15:00 後光線角度最美。</div>
+              <div class="al al-y">⚠️ 6月均溫 28–32°C，備好推車遮陽棚、防曬衣及飲水。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">17:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot f"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev trans">
+              <div class="ev-hd">
+                <div class="ev-title">🚗 晉安湖公園 → 晚餐地點</div>
+                <div class="ev-tags"><span class="tag tg-tr">交通</span></div>
+              </div>
+              <div class="ev-body">
+                <span class="how">🚗 滴滴快車</span>
+                <span class="how">⏱ 依目的地 10–20 分鐘</span>
+                <span class="how">💰 約 ¥20–35</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">17:30</div>
+            <div class="te">–19:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot a"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev hl" style="border-color:var(--c1);">
+              <div class="ev-hd">
+                <div class="ev-title">🍽 晚餐</div>
+                <div class="ev-tags"><span class="tag tg-ea">晚餐</span></div>
+              </div>
+              <div class="ev-body">二選一：</div>
+              <div class="rb">
+                <div class="rn">🏮 老福洲（道地福州菜）</div>
+                <div class="rtags"><span class="rtg rt-c">道地福州菜</span><span class="rtg rt-k">兒童友善</span></div>
+                <div class="rd">正宗福州本幫菜，口味清淡家常，適合首晚嚐鮮。</div>
+              </div>
+              <div class="rb" style="margin-top:8px;">
+                <div class="rn">🍜 醉得意（平價連鎖餐廳）</div>
+                <div class="rtags"><span class="rtg rt-c">閩菜連鎖</span><span class="rtg rt-k">幼兒友善</span><span
+                    class="rtg rt-p">人均¥50–70</span></div>
+                <div class="rd">平價連鎖，環境寬敞，推車好進出，菜色清淡不辣，適合帶嬰幼兒的輕鬆晚餐。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">19:30</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot f"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev trans">
+              <div class="ev-hd">
+                <div class="ev-title">🚗 返回世茂洲際酒店</div>
+                <div class="ev-tags"><span class="tag tg-tr">交通</span></div>
+              </div>
+              <div class="ev-body">
+                <span class="how">🚗 滴滴快車</span>
+                <span class="how">⏱ 約 15 分鐘</span><br>
+                返回酒店辦理正式入住（若早上已辦好則直接進房），幼兒洗浴休息，為明天文化遺產日大行程儲備體力。
+              </div>
+              <div class="al al-y">⚠️ 明天（D2）是行程最密集的一天，建議幼兒 21:30 前就寢。</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /tl -->
+
+      <div class="sum">
+        <div class="si">
+          <div class="sl">今日重點</div>
+          <div class="sv">晉安湖環湖步道<br>星光摩天輪</div>
+        </div>
+        <div class="si">
+          <div class="sl">交通費用</div>
+          <div class="sv">機場滴滴 ¥120–150<br>市內滴滴 ¥70–90</div>
+        </div>
+        <div class="si">
+          <div class="sl">注意事項</div>
+          <div class="sv">14:00 前可能無法入住<br>行李先寄放大廳</div>
+        </div>
+        <div class="si">
+          <div class="sl">明日準備</div>
+          <div class="sv">備推車防雨罩<br>21:30 前讓幼兒就寢</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+     DAY 2  6/13（六）文化遺產日
+══════════════════════════════════════ -->
+  <div id="d2" class="pn">
+    <div class="pg">
+
+      <div class="dh">
+        <div class="badge" style="background:var(--c2);">
+          <div class="n">2</div>
+          <div class="s">JUN 13</div>
+        </div>
+        <div class="dh-txt">
+          <h2 style="color:var(--c2);">🎪 文化和自然遺產日 · 上下杭</h2>
+          <div class="dh-chips">
+            <span class="dh-chip">🚇 地鐵1號線（茶亭→達道）</span>
+            <span class="dh-chip">🚶 步行（街區內）</span>
+            <span class="dh-chip" style="background:#e6f4ed;border-color:#a0c8b0;color:#1a5438;">🎪 6月第二個週六・全年最精彩</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 遺產日說明橫幅 -->
+      <div
+        style="background:linear-gradient(135deg,#1a5438,#2e7a50);border-radius:10px;padding:16px 20px;margin-bottom:24px;color:#fff;">
+        <div style="font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.6);margin-bottom:6px;">2026年文化和自然遺產日</div>
+        <div style="font-family:'Noto Serif TC',serif;font-size:16px;font-weight:600;margin-bottom:8px;">主場在上下杭歷史文化街區
+        </div>
+        <div style="font-size:12.5px;color:rgba(255,255,255,.8);line-height:1.75;">三捷河畔、隆平路、非遺一條街集結全省傳承人，16:30
+          後市集全開、19:00 後夜間光影巡遊，是全行程最精彩的一天。</div>
+      </div>
+
+      <div class="tl">
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">08:30</div>
+            <div class="te">–09:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev">
+              <div class="ev-hd">
+                <div class="ev-title">🌅 酒店早餐 · 出發準備</div>
+                <div class="ev-tags"><span class="tag tg-ea">早餐</span></div>
+              </div>
+              <div class="ev-body">今天行程長，出門請確認攜帶：推車防雨罩、幼兒替換衣物一套、飲水壺、防曬品。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">09:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot f"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev trans">
+              <div class="ev-hd">
+                <div class="ev-title">🚇 茶亭站 → 達道站（地鐵1號線）</div>
+                <div class="ev-tags"><span class="tag tg-tr">交通</span></div>
+              </div>
+              <div class="ev-body">
+                <span class="how">🚇 地鐵1號線 往南 1 站</span>
+                <span class="how">⏱ 約 3 分鐘</span>
+                <span class="how">💰 ¥2</span><br>
+                茶亭站有無障礙電梯，推車可直接進站。出達道站後步行約 10 分鐘抵達上下杭主街入口。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">09:15</div>
+            <div class="te">–12:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot a"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev hl" style="border-color:var(--c2);">
+              <div class="ev-hd">
+                <div class="ev-title">🌿 上下杭歷史文化街區 · 上午漫步</div>
+                <div class="ev-tags"><span class="tag tg-pl">景點</span><span class="tag tg-st">⭐ 拍照</span></div>
+              </div>
+              <div class="ev-body">
+                全區石板河畔，地面平緩，推車極順。<br>
+                <strong>09:15–10:30</strong>　沿三捷河、星安橋、三通橋散步拍照（安瀾會館紅磚騎樓是打卡重點）<br>
+                <strong>10:30–12:00</strong>　街區內找冷氣茶館或咖啡廳休息，讓嬰兒在推車中小睡；同時確認下午非遺攤位位置
+              </div>
+              <div class="al al-g">📸 安瀾會館紅磚騎樓＋三捷河榕樹倒影，是上下杭最美拍照角度。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">12:00</div>
+            <div class="te">–13:30</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot a"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev hl" style="border-color:var(--c2);">
+              <div class="ev-hd">
+                <div class="ev-title">🍽 午餐：上下杭周邊非遺美食</div>
+                <div class="ev-tags"><span class="tag tg-ea">午餐</span></div>
+              </div>
+              <div class="rb">
+                <div class="rn">🫙 耳聾伯元宵（中平路169號蒼霞新城）</div>
+                <div class="rtags"><span class="rtg rt-c">福州非遺百年小吃</span><span class="rtg rt-k">幼兒必吃</span></div>
+                <div class="rd">糯米外皮＋花生芝麻甜餡，口感軟糯，幼兒最愛。</div>
+              </div>
+              <div class="rb" style="margin-top:8px;">
+                <div class="rn">🍜 尚干億鑫拌麵扁肉（台江區中平路）</div>
+                <div class="rtags"><span class="rtg rt-c">福州在地小吃</span><span class="rtg rt-k">1歲可食</span></div>
+                <div class="rd">手工豬肉扁肉（如餛飩），皮薄湯清，1歲嬰兒可食。</div>
+              </div>
+              <div class="rb" style="margin-top:8px;">
+                <div class="rn">🥟 鄭森記肉燕（上下杭店）</div>
+                <div class="rtags"><span class="rtg rt-c">福州非遺「肉包肉」</span><span class="rtg rt-k">湯頭清淡</span></div>
+                <div class="rd">燕皮以豬瘦肉與地瓜粉手工槌打，薄如白紙口感滑脆，幼兒易入口。</div>
+              </div>
+              <div class="rb" style="margin-top:8px;">
+                <div class="rn">🐟 灣邊河鮮魚丸（台江區隆平路127號）</div>
+                <div class="rtags"><span class="rtg rt-c">魚丸專門店</span><span class="rtg rt-k">Q彈爆汁</span></div>
+                <div class="rd">鮮魚打製外皮，包豬肉餡，外層極度軟糯不卡牙。</div>
+              </div>
+              <div class="al al-y">⚠️ 以上均為小吃攤或小店，可跨店取餐，組合食用，午餐人均約 ¥30–50。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">13:30</div>
+            <div class="te">–16:30</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev">
+              <div class="ev-hd">
+                <div class="ev-title">🛍 街區下午漫步 · 推車午睡時段</div>
+                <div class="ev-tags"><span class="tag tg-rs">休息</span></div>
+              </div>
+              <div class="ev-body">
+                嬰兒在推車中午睡，大人繼續於街區內悠閒散步或在冷氣店家休息。16:00 後開始前往非遺一條街集結。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">16:30</div>
+            <div class="te">–19:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot a"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev hl" style="border-color:var(--c2);background:linear-gradient(135deg,#f0faf5,#f8f0ff);">
+              <div class="ev-hd">
+                <div class="ev-title">🎨 非遺 DIY 體驗 · 三捷河畔、隆平路、非遺一條街</div>
+                <div class="ev-tags"><span class="tag tg-pl">體驗</span><span class="tag tg-st">⭐ 遺產日主場</span></div>
+              </div>
+              <div class="ev-body">
+                <strong>地點：</strong>三捷河沿岸、隆平路、非遺一條街、杭肆廣場、金銀里廣場<br><br>
+                <strong>可體驗項目（隨到隨體驗）：</strong><br>
+                🎨 漂漆扇製作　🖨 木版年畫拓印　🕯 傳統制香<br>
+                🪡 竹編、漆器、寿山石雕等非遺精品市集<br>
+                🍡 福州礼饼、茉莉花茶等閩味美食攤<br><br>
+                推車可沿外圍步道全程通行。
+              </div>
+              <div class="al al-g">✅ 遺產日攤位數量是平日的 3–5 倍，無需特別預約，直接現場找感興趣的項目體驗。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">18:30</div>
+            <div class="te">–19:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot a"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev hl" style="border-color:var(--c2);">
+              <div class="ev-hd">
+                <div class="ev-title">🍽 晚餐（趕在夜間巡遊前用餐）</div>
+                <div class="ev-tags"><span class="tag tg-ea">晚餐</span></div>
+              </div>
+              <div class="ev-body">在市集攤位或附近餐廳用餐，為 19:00 夜間巡遊儲備體力。可繼續選擇午餐推薦店家或市集小吃。</div>
+              <div class="al al-b">💡 建議 18:30 左右找位置用餐，確保 19:00 前吃完並找好夜間巡遊觀賞位置。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">19:00</div>
+            <div class="te">–20:30</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot r"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev hl" style="border-color:var(--c2);background:linear-gradient(135deg,#e6f4ed,#f0f0ff);">
+              <div class="ev-hd">
+                <div class="ev-title">🎇 遺產日非遺夜間巡遊（全行程最精彩時刻）</div>
+                <div class="ev-tags"><span class="tag tg-st">⭐ 壓軸亮點</span><span class="tag tg-pl">表演</span></div>
+              </div>
+              <div class="ev-body">
+                夜間非遺沉浸式隊伍沿上下杭青石板路巡遊：<br><br>
+                🐟 <strong>巨型福魚光影秀</strong>——大型發光裝置巡行，4歲幼兒最難忘的視覺體驗<br>
+                🎭 <strong>高蹺、布袋偶戲</strong>——非遺隊伍近距離通過，幼兒超興奮<br>
+                💃 <strong>火鼎公婆、拍胸舞</strong>——熱鬧歡騰<br>
+                🏮 <strong>三捷河兩岸燈光裝置</strong>——夜景極美，適合推車沿河拍照
+              </div>
+              <div class="al al-y">⚠️ 評估嬰兒狀態：若1歲嬰兒已疲憊，20:00 可先行離場；4歲幼兒已看到最精彩部分。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">20:30</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot f"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev trans">
+              <div class="ev-hd">
+                <div class="ev-title">🚗 叫滴滴返回世茂洲際酒店</div>
+                <div class="ev-tags"><span class="tag tg-tr">交通</span></div>
+              </div>
+              <div class="ev-body">
+                <span class="how">🚗 滴滴快車</span>
+                <span class="how">⏱ 約 10–15 分鐘</span>
+                <span class="how">💰 約 ¥15–20</span><br>
+                散場後人多，建議提前在 App 叫車等待。
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="sum">
+        <div class="si">
+          <div class="sl">今日重點</div>
+          <div class="sv">非遺 DIY 體驗<br>夜間光影巡遊</div>
+        </div>
+        <div class="si">
+          <div class="sl">交通費用</div>
+          <div class="sv">地鐵 ¥2×2<br>滴滴返程 ¥15–20</div>
+        </div>
+        <div class="si">
+          <div class="sl">體驗費用</div>
+          <div class="sv">非遺手作 ¥30–150<br>視選擇項目而定</div>
+        </div>
+        <div class="si">
+          <div class="sl">注意事項</div>
+          <div class="sv">人潮極多，推車走外圍<br>20:30 前評估嬰兒狀態</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+     DAY 3  6/14（日）三坊七巷
+══════════════════════════════════════ -->
+  <div id="d3" class="pn">
+    <div class="pg">
+
+      <div class="dh">
+        <div class="badge" style="background:var(--c3);">
+          <div class="n">3</div>
+          <div class="s">JUN 14</div>
+        </div>
+        <div class="dh-txt">
+          <h2 style="color:var(--c3);">三坊七巷 · 手作體驗 · 東百中心</h2>
+          <div class="dh-chips">
+            <span class="dh-chip">🚇 地鐵1號線（茶亭→東街口）</span>
+            <span class="dh-chip">🚶 步行（主街石板路）</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl">
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">08:30</div>
+            <div class="te">–09:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev">
+              <div class="ev-hd">
+                <div class="ev-title">🌅 酒店早餐 · 出發準備</div>
+                <div class="ev-tags"><span class="tag tg-ea">早餐</span></div>
+              </div>
+              <div class="ev-body">昨天遺產日耗盡體力，今天節奏稍緩。早餐吃飽，09:00 準時出發。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">09:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot f"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev trans">
+              <div class="ev-hd">
+                <div class="ev-title">🚇 茶亭站 → 東街口站（地鐵1號線）</div>
+                <div class="ev-tags"><span class="tag tg-tr">交通</span></div>
+              </div>
+              <div class="ev-body">
+                <span class="how">🚇 地鐵1號線 往北 3 站</span>
+                <span class="how">⏱ 約 8 分鐘</span>
+                <span class="how">💰 ¥3</span><br>
+                東街口站出來後，<strong>走地下連通道</strong>直達三坊七巷南後街入口（不需出地面）。C 出口出，沿揚橋東路步行 400 米亦可到達。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">09:15</div>
+            <div class="te">–11:30</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot a"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev hl" style="border-color:var(--c3);">
+              <div class="ev-hd">
+                <div class="ev-title">🏯 三坊七巷 · 非遺手作體驗</div>
+                <div class="ev-tags"><span class="tag tg-pl">體驗</span><span class="tag tg-st">⭐ 幼兒重點</span></div>
+              </div>
+              <div class="ev-body">
+                景區開放時間 <strong>08:30–17:00</strong>，建議 09:00 人少時進場。<br>
+                主街南後街石板路平整，推車可全程通行。<strong>注意避開支巷（多台階）</strong>。<br><br>
+                4歲幼兒非遺手作體驗推薦：<br>
+                🪁 油紙傘彩繪　🖨 木版年畫拓印　🕯 傳統制香<br>
+                （各攤位費用約 ¥20–60，隨到隨體驗）
+              </div>
+              <div class="al al-y">⚠️ 部分攤位非每日固定開放，建議前一天於小紅書搜尋「三坊七巷手作 2026」確認當日開放。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">11:30</div>
+            <div class="te">–13:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot a"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev hl" style="border-color:var(--c3);">
+              <div class="ev-hd">
+                <div class="ev-title">🍽 午餐：三坊七巷附近</div>
+                <div class="ev-tags"><span class="tag tg-ea">午餐</span></div>
+              </div>
+              <div class="rb">
+                <div class="rn">🥟 同利肉燕（三坊七巷店）</div>
+                <div class="rtags"><span class="rtg rt-c">福州非遺「肉包肉」</span><span class="rtg rt-k">1歲嬰兒可食</span><span
+                    class="rtg rt-p">人均¥30–50</span></div>
+                <div class="rd">燕皮以豬瘦肉與地瓜粉手工槌打而成，薄如白紙口感滑脆；湯頭清淡，兩個孩子都能入口。遺產日後市區人氣更旺，<strong>建議 11:30 前到場</strong>。</div>
+              </div>
+              <div class="rb" style="margin-top:8px;">
+                <div class="rn">🥟 同利肉燕（東百中心店）／ 🐟 永和魚丸（三坊七巷店）</div>
+                <div class="rtags"><span class="rtg rt-c">閩菜非遺</span><span class="rtg rt-k">幼兒友善</span></div>
+                <div class="rd">若三坊七巷店排隊，可步行至東百中心分店；永和魚丸外皮極度軟糯完全不卡牙，亦是好選擇。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">13:00</div>
+            <div class="te">–17:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot a"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev hl" style="border-color:var(--c3);">
+              <div class="ev-hd">
+                <div class="ev-title">🛍 南後街主街＋閩味市集（13:30–17:00）</div>
+                <div class="ev-tags"><span class="tag tg-sh">逛街</span><span class="tag tg-pl">體驗</span></div>
+              </div>
+              <div class="ev-body">
+                <strong>13:00–13:30</strong>　推車午睡：用完午餐讓嬰兒在商場或街區走道中午睡<br>
+                <strong>13:30–17:00</strong>　南後街主街＆閩味市集（隨到隨體驗，免預約）<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;→ 南後街兩側集結大批非遺市集攤位<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;→ 可現場參與漂漆扇製作、木版年畫拓印、傳統制香等<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;→ 4歲幼兒可繼續體驗昨天沒玩到的項目
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">17:00</div>
+            <div class="te">–18:30</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev">
+              <div class="ev-hd">
+                <div class="ev-title">🏢 東百中心商場 · 逛街採買 ＋ 頂樓觀景台</div>
+                <div class="ev-tags"><span class="tag tg-sh">逛街</span></div>
+              </div>
+              <div class="ev-body">
+                由三坊七巷步行 5 分鐘至東百中心。<br>
+                ① 逛街採買福州伴手禮（芋泥餅、橄欖、茶葉）<br>
+                ② 前往<strong>頂樓觀景台（免費）</strong>俯瞰三坊七巷全貌，是全行程最佳俯拍角度
+              </div>
+              <div class="al al-g">☔ 東百中心全室內，此段即使下雨也完全不受影響。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">18:30</div>
+            <div class="te">–20:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot a"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev hl" style="border-color:var(--c3);">
+              <div class="ev-hd">
+                <div class="ev-title">🍽 晚餐：聚春園佛跳牆酒樓（東百中心店）</div>
+                <div class="ev-tags"><span class="tag tg-ea">晚餐</span></div>
+              </div>
+              <div class="rb">
+                <div class="rn">🏛 聚春園佛跳牆酒樓（東百中心店）</div>
+                <div class="rtags"><span class="rtg rt-c">百年閩菜老字號</span><span class="rtg rt-k">環境安靜</span><span
+                    class="rtg rt-a">電梯無障礙</span><span class="rtg rt-p">人均¥80–120</span></div>
+                <div class="rd">
+                  <strong>必點：</strong>佛跳牆（單人份）、荔枝肉（豬肉切十字花刀油炸後佐酸甜醬，4歲孩子最愛）、芋泥<br>
+                  位於東百中心商場內，電梯直達，推車全程無障礙。口味溫和不辣，適合帶嬰幼兒安靜用餐。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">20:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot f"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev trans">
+              <div class="ev-hd">
+                <div class="ev-title">🚗 叫滴滴返回世茂洲際酒店</div>
+                <div class="ev-tags"><span class="tag tg-tr">交通</span></div>
+              </div>
+              <div class="ev-body">
+                <span class="how">🚗 滴滴快車</span>
+                <span class="how">⏱ 約 10 分鐘</span>
+                <span class="how">💰 約 ¥15</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="sum">
+        <div class="si">
+          <div class="sl">今日重點</div>
+          <div class="sv">三坊七巷手作體驗<br>聚春園佛跳牆</div>
+        </div>
+        <div class="si">
+          <div class="sl">交通費用</div>
+          <div class="sv">地鐵 ¥3×2<br>滴滴返程 ¥15</div>
+        </div>
+        <div class="si">
+          <div class="sl">體驗費用</div>
+          <div class="sv">手作 ¥20–60/項<br>觀景台免費</div>
+        </div>
+        <div class="si">
+          <div class="sl">注意事項</div>
+          <div class="sv">主街平整可推車<br>支巷多台階需避開</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+     DAY 4  6/15（一）萬象城
+══════════════════════════════════════ -->
+  <div id="d4" class="pn">
+    <div class="pg">
+
+      <div class="dh">
+        <div class="badge" style="background:var(--c4);">
+          <div class="n">4</div>
+          <div class="s">JUN 15</div>
+        </div>
+        <div class="dh-txt">
+          <h2 style="color:var(--c4);">萬象城 MixC · 悠閒逛街日</h2>
+          <div class="dh-chips">
+            <span class="dh-chip">🚗 滴滴出行（專車／商務車）</span>
+            <span class="dh-chip">🏙 全日室內，不受天氣影響</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl">
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">08:30</div>
+            <div class="te">–09:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev">
+              <div class="ev-hd">
+                <div class="ev-title">🌅 酒店早餐 · 最後輕鬆一天</div>
+                <div class="ev-tags"><span class="tag tg-ea">早餐</span></div>
+              </div>
+              <div class="ev-body">行程第四天，節奏最輕鬆。<strong>今晚需完成行李打包</strong>，明早 06:00 起床返程。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">09:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot f"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev trans">
+              <div class="ev-hd">
+                <div class="ev-title">🚗 世茂洲際 → 福州萬象城 MixC</div>
+                <div class="ev-tags"><span class="tag tg-tr">交通</span></div>
+              </div>
+              <div class="ev-body">
+                <span class="how">🚗 滴滴專車或商務車</span>
+                <span class="how">⏱ 約 15 分鐘</span>
+                <span class="how">💰 約 ¥25–35</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">09:15</div>
+            <div class="te">–11:30</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev">
+              <div class="ev-hd">
+                <div class="ev-title">🏙 萬象城早場逛街 · 西西弗書店或精品樓層</div>
+                <div class="ev-tags"><span class="tag tg-sh">逛街</span></div>
+              </div>
+              <div class="ev-body">
+                萬象城是全福州動線最寬敞、最適合推車的商場。<br>
+                ① 帶幼兒在廣場探索、親子互動<br>
+                ② 大人逛西西弗書店選書，或精品樓層悠閒放風<br>
+                ③ 確認萬象城母嬰室位置（全福州最高規格）
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">11:30</div>
+            <div class="te">–13:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot a"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev hl" style="border-color:var(--c4);">
+              <div class="ev-hd">
+                <div class="ev-title">🍽 午餐：萬象城餐飲</div>
+                <div class="ev-tags"><span class="tag tg-ea">午餐</span></div>
+              </div>
+              <div class="rb">
+                <div class="rn">🐚 閩和南（萬象城 MixC 內）</div>
+                <div class="rtags"><span class="rtg rt-c">精緻閩南菜</span><span class="rtg rt-k">點心幼兒喜愛</span><span
+                    class="rtg rt-a">頂級母嬰室</span><span class="rtg rt-p">人均¥80–120</span></div>
+                <div class="rd"><strong>必點：</strong>蔥茸包（鬆軟適合幼兒）、海蠣煎、薑母鴨、土筍凍。環境典雅桌距大，緊鄰頂級母嬰室。</div>
+              </div>
+              <div class="rb" style="margin-top:8px;">
+                <div class="rn">🥘 西貝莜面村（萬象城店）</div>
+                <div class="rtags"><span class="rtg rt-c">北方家常菜</span><span class="rtg rt-k">兒童套餐・無添加</span><span
+                    class="rtg rt-p">人均¥70–90</span></div>
+                <div class="rd"><strong>必點：</strong>手工莜面、西紅柿雞蛋湯。主打無味精無添加，提供兒童專屬餐具套餐。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">13:00</div>
+            <div class="te">–17:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev">
+              <div class="ev-hd">
+                <div class="ev-title">🛍 萬象城下午繼續逛街 · 推車午睡</div>
+                <div class="ev-tags"><span class="tag tg-sh">逛街</span><span class="tag tg-rs">午睡</span></div>
+              </div>
+              <div class="ev-body">
+                <strong>13:00–14:00</strong>　推車午睡，大人在寬敞走道慢逛或咖啡廳休息<br>
+                <strong>14:00–17:00</strong>　繼續商場各樓層，帶幼兒自由探索；地下超市可補充明天飛機上的零食與飲料<br><br>
+                今天是最輕鬆的一天，刻意放慢節奏，保留體力迎接明天早起返程。
+              </div>
+              <div class="al al-g">💡 萬象城全日室內，完全不受天氣影響，是雨天或晴天同樣舒適的行程。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">17:30</div>
+            <div class="te">–19:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot a"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev hl" style="border-color:var(--c4);">
+              <div class="ev-hd">
+                <div class="ev-title">🍽 晚餐：飯店內享用或外出覓食</div>
+                <div class="ev-tags"><span class="tag tg-ea">晚餐</span></div>
+              </div>
+              <div class="ev-body">
+                依當天體力與食慾決定：<br>
+                <strong>選項 A（省力）：</strong>叫滴滴返回世茂洲際，直接於酒店餐廳用最後一頓晚餐，飯後整理行李<br>
+                <strong>選項 B（外出）：</strong>萬象城餐飲層選擇西貝莜面村（午飯選閩和南的話）或其他喜歡的餐廳
+              </div>
+              <div class="al al-r">🧳 晚餐後無論選哪個方案，請立即回酒店完成<strong>所有行李打包</strong>。明早只確認退房手續。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">19:30</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot f"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev trans">
+              <div class="ev-hd">
+                <div class="ev-title">🚗 返回世茂洲際酒店 · 整理行李</div>
+                <div class="ev-tags"><span class="tag tg-tr">交通</span></div>
+              </div>
+              <div class="ev-body">
+                <span class="how">🚗 滴滴快車</span>
+                <span class="how">⏱ 約 15 分鐘</span>
+                <span class="how">💰 約 ¥25–35</span><br>
+                回酒店後打包所有行李（推車裝入收納袋保護），幼兒洗浴就寢，目標 21:30 全員入睡。
+              </div>
+              <div class="al al-y">⚠️ 打包清單：護照×2、推車收納袋、嬰兒用品包、大件行李全數封箱。</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="sum">
+        <div class="si">
+          <div class="sl">今日重點</div>
+          <div class="sv">萬象城悠閒逛街<br>書店・精品・親子</div>
+        </div>
+        <div class="si">
+          <div class="sl">交通費用</div>
+          <div class="sv">滴滴來回 ¥50–70</div>
+        </div>
+        <div class="si">
+          <div class="sl">今晚必做</div>
+          <div class="sv">完成所有行李打包<br>21:30 全員入睡</div>
+        </div>
+        <div class="si">
+          <div class="sl">明日時間線</div>
+          <div class="sv">06:00 起床<br>06:15 退房<br>06:45 出發</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+     DAY 5  6/16（二）返程
+══════════════════════════════════════ -->
+  <div id="d5" class="pn">
+    <div class="pg">
+
+      <div class="dh">
+        <div class="badge" style="background:var(--c5);">
+          <div class="n">5</div>
+          <div class="s">JUN 16</div>
+        </div>
+        <div class="dh-txt">
+          <h2 style="color:var(--c5);">返程日 ✈ AE0212 09:45 起飛</h2>
+          <div class="dh-chips">
+            <span class="dh-chip">🚗 滴滴商務車（前一晚預約）</span>
+            <span class="dh-chip">⚠️ 06:45 前必須出發</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 返程時間線總覽 -->
+      <div
+        style="background:var(--c5);border-radius:10px;padding:16px 20px;margin-bottom:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;text-align:center;">
+        <div>
+          <div style="font-size:18px;font-weight:700;color:#e0a040;font-family:'Noto Serif TC',serif;">06:00</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.65);margin-top:3px;">起床</div>
+        </div>
+        <div>
+          <div style="font-size:18px;font-weight:700;color:#e0a040;font-family:'Noto Serif TC',serif;">06:15</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.65);margin-top:3px;">退房完成</div>
+        </div>
+        <div>
+          <div style="font-size:18px;font-weight:700;color:#e0a040;font-family:'Noto Serif TC',serif;">06:45</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.65);margin-top:3px;">出發機場</div>
+        </div>
+        <div>
+          <div style="font-size:18px;font-weight:700;color:#e0a040;font-family:'Noto Serif TC',serif;">07:30</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.65);margin-top:3px;">目標到機場</div>
+        </div>
+      </div>
+
+      <div class="tl">
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">06:00</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot r"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev">
+              <div class="ev-hd">
+                <div class="ev-title">⏰ 起床 · 叫醒幼兒 · 最後確認</div>
+                <div class="ev-tags"><span class="tag tg-rs">起床</span></div>
+              </div>
+              <div class="ev-body">
+                昨晚已完成大件行李打包，今早確認：<br>
+                ✓ 護照×2　✓ 手機＋充電器　✓ 嬰兒推車（已入收納袋）<br>
+                ✓ 檢查浴室、床底、衣櫃無遺漏　✓ 確認叫車 App 車輛已到位
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">06:00</div>
+            <div class="te">–06:15</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot f"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev">
+              <div class="ev-hd">
+                <div class="ev-title">🏨 辦理退房 · 確認帳單</div>
+                <div class="ev-tags"><span class="tag tg-tr">退房</span></div>
+              </div>
+              <div class="ev-body">
+                一方大人帶房卡至前台退房確認帳單，另一方在大廳看顧孩子與行李。行李推車集中在大廳出口等車。
+              </div>
+              <div class="al al-b">💡 前一晚請電話或 App 預約 06:30 商務車（GL8），避免早晨搶車。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">06:45</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot a"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev hl" style="border-color:var(--c5);">
+              <div class="ev-hd">
+                <div class="ev-title">🚗 出發 → 長樂國際機場</div>
+                <div class="ev-tags"><span class="tag tg-tr">交通</span></div>
+              </div>
+              <div class="ev-body">
+                <span class="how">🚗 滴滴商務車（GL8）</span>
+                <span class="how">⏱ 40–50 分鐘</span>
+                <span class="how">💰 約 ¥120–150</span><br>
+                上車前確認所有行李均已裝入後廂。目的地告知司機「<strong>福州長樂國際機場 T1 航站樓</strong>」（請確認 AE0212 使用的航站樓）。車上讓幼兒吃早餐（備好麵包、餅乾）。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">07:30</div>
+            <div class="te">–08:20</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot f"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev">
+              <div class="ev-hd">
+                <div class="ev-title">✈ 抵達機場 · 辦理值機（Check-in）</div>
+                <div class="ev-tags"><span class="tag tg-tr">辦理手續</span></div>
+              </div>
+              <div class="ev-body">
+                ① <strong>確認推車托運方式：</strong>部分航班可帶推車至登機口再托運（最方便）；部分需在值機櫃台直接托運，請提前向中華航空確認<br>
+                ② 尋找<strong>人工值機櫃台</strong>（帶嬰幼兒可走「特殊旅客」通道，通常較快）<br>
+                ③ 托運行李（推車裝入收納袋）、領取登機牌
+              </div>
+              <div class="al al-y">⚠️ 帶嬰兒推車的家庭安檢通常需要 30–40 分鐘，請預留足夠時間。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">08:20</div>
+            <div class="te">–09:15</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot f"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev">
+              <div class="ev-hd">
+                <div class="ev-title">🛂 安檢 · 前往登機口 · 候機</div>
+                <div class="ev-tags"><span class="tag tg-tr">安檢</span></div>
+              </div>
+              <div class="ev-body">
+                攜帶嬰幼兒可走「愛心通道」，通常有獨立安檢線。安檢後確認登機口，讓幼兒在候機室最後一次奔跑放電（飛機上需長時間坐著）。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="row-time">
+            <div class="tm">09:20</div>
+          </div>
+          <div class="dot-col">
+            <div class="dot r"></div>
+            <div class="dl"></div>
+          </div>
+          <div class="ev-col">
+            <div class="ev hl" style="border-color:var(--c5);">
+              <div class="ev-hd">
+                <div class="ev-title">🛫 登機 · AE0212 09:45 起飛 → 11:25 抵台</div>
+                <div class="ev-tags"><span class="tag tg-st">返程</span></div>
+              </div>
+              <div class="ev-body">
+                提前 20–25 分鐘前往登機口。帶嬰幼兒可申請<strong>優先登機</strong>（Priority Boarding），請在登機口向工作人員說明。<br><br>
+                中華航空 AE0212 ｜ 09:45 福州起飛 → 11:25 抵達臺北<br>
+                飛行時間約 1 小時 40 分鐘。平安回家！🏠
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="sum">
+        <div class="si">
+          <div class="sl">關鍵時間線</div>
+          <div class="sv">06:00 起床<br>06:15 退房<br>06:45 出發<br>07:30 到機場</div>
+        </div>
+        <div class="si">
+          <div class="sl">推車托運</div>
+          <div class="sv">提前確認中華航空<br>托運政策，備好<br>推車收納袋</div>
+        </div>
+        <div class="si">
+          <div class="sl">叫車建議</div>
+          <div class="sv">前一晚預約<br>商務車 GL8<br>避免早晨等車</div>
+        </div>
+        <div class="si">
+          <div class="sl">安檢提示</div>
+          <div class="sv">走愛心通道<br>預留 30–40 分鐘<br>液態品裝袋備查</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function gd(n, btn) {
+      document.querySelectorAll('.pn').forEach(p => p.classList.remove('on'));
+      document.querySelectorAll('.dt').forEach(t => t.classList.remove('on'));
+      document.getElementById('d' + n).classList.add('on');
+      btn.classList.add('on');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+
+</html>
+<!--text-->
