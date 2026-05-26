@@ -1,7 +1,7 @@
 {
   "name": "福州親子行程",
   "short_name": "福州行程",
-  "start_url": "fuzhou-itinerary.html",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#f6f2eb",
   "theme_color": "#1c1610",

@@ -1,6 +1,7 @@
 const CACHE_NAME = 'fuzhou-itinerary-v1';
 const urlsToCache = [
-  './fuzhou-itinerary.html',
+  './',
+  './index.html',
   './manifest.json',
   './icon.svg'
 ];
